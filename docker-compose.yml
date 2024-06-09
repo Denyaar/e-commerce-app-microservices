@@ -58,6 +58,9 @@ services:
     ports:
       - 1080:1080
       - 1025:1025
+#    environment:
+#      MAILDEV_USERNAME: root
+#      MAILDEV_PASSWORD: Mupezeni0102?
 
   zookeeper:
     image: wurstmeister/zookeeper

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Payment Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Payment Confirmation</h1>
+        <p th:text="'This is an auto-generated email. Please do not reply.'">This is an auto-generated email. Please do not reply.</p>
+    </div>
+    <div class="content">
+        <p>Dear <span th:text="${customerName}">${customerName}</span>,</p>
+        <p>This email confirms that your payment of <span th:text="${#numbers.formatCurrency(amount, 2, 'USD')}">${amount.formatCurrency(Locale.US)}</span> has been received for order reference <span th:text="${orderReference}">${orderReference}</span>.</p>
+        <p>Thank you for your business!</p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Denyaar Investments</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            line-height: 1.5;
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .product-table th,
+        .product-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Order Confirmation</h1>
+        <p th:text="'This is an auto-generated email. Please do not reply.'">This is an auto-generated email. Please do not reply.</p>
+    </div>
+    <div class="content">
+        <p>Dear <span th:text="${customerName}">${customerName}</span>,</p>
+        <p>This email confirms your order <span th:text="${orderReference}">${orderReference}</span>.</p>
+        <h2>Order Details</h2>
+        <table class="product-table">
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.quantity}"></td>
+                <td th:text="${#numbers.formatCurrency(product.price, 2, 'USD')}">${product.price.formatCurrency(Locale.US)}</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>Total Amount: <span th:text="${#numbers.formatCurrency(amount, 2, 'USD')}">${amount.formatCurrency(Locale.US)}</span></p>
+        <p>Thank you for your order!</p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Denyaar Investments</p>
+    </div>
+</body>
+</html>
