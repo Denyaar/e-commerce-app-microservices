@@ -1,10 +1,10 @@
 /**
  * Created by tendaimupezeni for e-commerce-app
  * Date: 6/9/24
- * Time: 2:59 PM
+ * Time: 9:34 PM
  */
 
-package com.denyaar.orderservice.order;
+package com.denyaar.paymentservice.payment;
 
 public enum PaymentMethod {
     PAYPAL,
@@ -12,5 +12,4 @@ public enum PaymentMethod {
     VISA,
     MASTER_CARD,
     BITCOIN
-
 }

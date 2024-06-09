@@ -9,6 +9,7 @@
         <module name="config-server" />
         <module name="product-service" />
         <module name="order-service" />
+        <module name="payment-sevice" />
         <module name="customer-service" />
         <module name="discovery" />
       </profile>
@@ -20,6 +21,7 @@
       <module name="customer-service" options="-parameters" />
       <module name="discovery" options="-parameters" />
       <module name="order-service" options="-parameters" />
+      <module name="payment-sevice" options="-parameters" />
       <module name="product-service" options="-parameters" />
     </option>
   </component>
