@@ -19,4 +19,11 @@ public class KafkaOrderTopicConfig {
         return TopicBuilder.name("order-topic")
                 .build();
     }
+
+    @Bean
+    public NewTopic orderLineTopic() {
+        return TopicBuilder.name("order-line-topic")
+                .build();
+    }
+
 }

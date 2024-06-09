@@ -4,8 +4,9 @@
  * Time: 5:09 PM
  */
 
-package com.denyaar.orderservice.order;
+package com.denyaar.orderservice.orderline;
 
+import com.denyaar.orderservice.order.Order;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,5 +20,12 @@ public class OrderLineMapper {
                 .productId(orderLineRequest.productId())
                 .quantity(orderLineRequest.quantity())
                 .build();
+    }
+
+    public OrderLineResponse toOrderLIneResponse(OrderLine orderLine) {
+        return new OrderLineResponse(
+                orderLine.getOrder().getId(),
+                orderLine.getQuantity()
+        );
     }
 }

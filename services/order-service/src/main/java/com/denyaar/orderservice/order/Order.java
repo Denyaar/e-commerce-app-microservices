@@ -6,6 +6,7 @@
 
 package com.denyaar.orderservice.order;
 
+import com.denyaar.orderservice.orderline.OrderLine;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;

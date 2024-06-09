@@ -4,8 +4,9 @@
  * Time: 3:01 PM
  */
 
-package com.denyaar.orderservice.order;
+package com.denyaar.orderservice.orderline;
 
+import com.denyaar.orderservice.order.Order;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;

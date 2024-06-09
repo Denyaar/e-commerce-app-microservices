@@ -10,10 +10,14 @@ import com.denyaar.orderservice.customer.CustomerClient;
 import com.denyaar.orderservice.exception.BussinesException;
 import com.denyaar.orderservice.kafka.OrderConfirmation;
 import com.denyaar.orderservice.kafka.OrderProducer;
+import com.denyaar.orderservice.orderline.OrderLineRequest;
+import com.denyaar.orderservice.orderline.OrderLineService;
 import com.denyaar.orderservice.product.ProductClient;
 import com.denyaar.orderservice.product.PurchaseRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -40,7 +44,7 @@ public class OrderService {
             orderLineService.saveOrderLine(new OrderLineRequest(null, order.getId(), purchaseRequest.productId(), purchaseRequest.quantity()));
         }
 
-        //todo impliment payment service
+        //todo implement payment service
 
         orderProducer.sendOrderConfirmation(
                 new OrderConfirmation(
@@ -54,5 +58,17 @@ public class OrderService {
 
         return  order.getId();
 
+    }
+
+    public List<OrderResponse> findAll() {
+            return  orderRepository.findAll().stream()
+                    .map(mapper::toOrderResponse)
+                    .toList();
+    }
+
+    public OrderResponse findByIdAndOrderById(Integer id) {
+        return orderRepository.findById(id)
+                .map(mapper::toOrderResponse)
+                .orElseThrow(() -> new BussinesException("Order not found"));
     }
 }

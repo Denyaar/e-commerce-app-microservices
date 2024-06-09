@@ -4,7 +4,7 @@
  * Time: 5:04 PM
  */
 
-package com.denyaar.orderservice.order;
+package com.denyaar.orderservice.orderline;
 
 public record OrderLineRequest(Integer id, Integer orderId, Integer productId, Integer quantity) {
 }

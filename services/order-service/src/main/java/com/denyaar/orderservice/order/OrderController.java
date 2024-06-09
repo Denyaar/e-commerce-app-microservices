@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/orders")
 @RequiredArgsConstructor
@@ -24,23 +26,12 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Order>> getOrders() {
-        return ResponseEntity.ok(orderService.getOrders());
+    public ResponseEntity<List<OrderResponse>> getOrders() {
+        return ResponseEntity.ok(orderService.findAll());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Order> getOrder(@PathVariable Integer id) {
-        return ResponseEntity.ok(orderService.getOrder(id));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Order> updateOrder(@PathVariable Integer id, @RequestBody Order order) {
-        return ResponseEntity.ok(orderService.updateOrder(id, order));
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteOrder(@PathVariable Integer id) {
-        orderService.deleteOrder(id);
-        return ResponseEntity.noContent().build();
+    @GetMapping("/{order-id}")
+    public ResponseEntity<OrderResponse> getOrder(@PathVariable("order-id") Integer id) {
+        return ResponseEntity.ok(orderService.findByIdAndOrderById(id));
     }
 }
