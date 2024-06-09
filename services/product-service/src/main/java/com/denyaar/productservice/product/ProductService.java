@@ -7,6 +7,7 @@
 package com.denyaar.productservice.product;
 
 import com.denyaar.productservice.exceptions.ProductNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -57,17 +58,13 @@ public class ProductService {
 
             purchasedProducts.add(mapper.toProductPurchaseResponse(product, request.quantity()));
         }
-
         return purchasedProducts;
-
-
-
     }
 
     public ProductResponse findById(Integer productId) {
         return productRepository.findById(productId)
                 .map(mapper::toProductResponse)
-                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Product not found"));
     }
 
     public List<ProductResponse> findAll() {

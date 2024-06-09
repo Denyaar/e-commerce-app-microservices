@@ -1,0 +1,35 @@
+-- -- INSERT INTO category (id, name, description) VALUES (nextval('category_seq'), 'Electronics', 'Electronic devices');
+-- -- INSERT INTO category (id, name, description) VALUES (nextval('category_seq'), 'Clothing', 'Men''s and women''s clothes');
+-- -- INSERT INTO category (id, name, description) VALUES (nextval('category_seq'), 'Home Goods', 'Household items');
+-- -- INSERT INTO category (id, name, description) VALUES (nextval('category_seq'), 'Sports', 'Sports equipment and gear');
+-- -- INSERT INTO category (id, name, description) VALUES (nextval('category_seq'), 'Furniture', 'Home furniture and decor');
+-- --
+--
+--
+--
+-- INSERT INTO product (id, name, description, price, available_quantity, category_id)
+-- VALUES (nextval('product_seq'), 'Laptop', 'Dell XPS 13', 1000.00, 100, 1001);
+--
+-- INSERT INTO product (id, name, description, price, available_quantity, category_id)
+-- VALUES (nextval('product_seq'), 'TV', '4K Smart TV', 999.99, 10, 1001);
+--
+-- INSERT INTO product (id, name, description, price, available_quantity, category_id)
+-- VALUES (nextval('product_seq'), 'Shirt', 'Men''s casual shirt', 29.99, 20, 1051);
+--
+-- INSERT INTO product (id, name, description, price, available_quantity, category_id)
+-- VALUES (nextval('product_seq'), 'Sofa', '3-seater leather sofa', 1299.99, 5, 1201);
+--
+-- INSERT INTO product (id, name, description, price, available_quantity, category_id)
+-- VALUES (nextval('product_seq'), 'Laptop', '15" Notebook', 799.99, 15, 1001);
+--
+-- INSERT INTO product (id, name, description, price, available_quantity, category_id)
+-- VALUES (nextval('product_seq'), 'Shoes', 'Men''s running shoes', 69.99, 25, 1051);
+--
+-- INSERT INTO product (id, name, description, price, available_quantity, category_id)
+-- VALUES (nextval('product_seq'), 'Dining Table', '6-seater dining table', 499.99, 10, 1201);
+--
+-- INSERT INTO product (id, name, description, price, available_quantity, category_id)
+-- VALUES (nextval('product_seq'), 'Soccer Ball', 'Official size soccer ball', 19.99, 50, 1151);
+--
+-- INSERT INTO product (id, name, description, price, available_quantity, category_id)
+-- VALUES (nextval('product_seq'), 'Tennis Racket', 'Professional tennis racket', 99.99, 10, 1151);
