@@ -95,12 +95,12 @@ services:
 
   keycloak:
     container_name: ms_keycloak
-    image: quay.io/keycloak/keycloak:24.0.2
+    image: quay.io/keycloak/keycloak:latest
     ports:
       - 8080:8080
     environment:
-        KEYCLOAK_USER: root
-        KEYCLOAK_PASSWORD: Mupezeni0102?
+        KEYCLOAK_ADMIN: mupezeni
+        KEYCLOAK_ADMIN_PASSWORD: 'Mupezeni0102?'
     networks:
         - microservices-net
     command:
