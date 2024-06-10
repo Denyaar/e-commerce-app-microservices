@@ -48,6 +48,7 @@ public class OrderService {
 
         paymentClient.requestPayment(
                 new PaymentRequest(
+                        request.id(),
                         request.amount(),
                         request.paymentMethod(),
                         order.getId(),
