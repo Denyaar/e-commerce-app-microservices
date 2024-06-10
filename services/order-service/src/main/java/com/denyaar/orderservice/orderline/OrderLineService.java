@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class OrderLineService {
 
     private final OrderLineRepository orderLineRepository;
-    private  OrderLineMapper orderLineMapper;
+    private  final OrderLineMapper orderLineMapper;
     public Integer saveOrderLine(OrderLineRequest orderLineRequest) {
         var order  =  orderLineMapper.mapToOrderLine(orderLineRequest);
         return orderLineRepository.save(order).getId();

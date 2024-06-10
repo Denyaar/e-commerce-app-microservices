@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 public class OrderLineMapper {
     public OrderLine mapToOrderLine(OrderLineRequest orderLineRequest) {
         return  OrderLine.builder()
-                .id(orderLineRequest.id())
                 .order(Order.builder()
                         .id(orderLineRequest.orderId())
                         .build())
