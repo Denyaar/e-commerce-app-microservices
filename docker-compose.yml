@@ -29,28 +29,30 @@ services:
       - microservices-net
     restart: unless-stopped
 
-  mongodb:
+  mongo:
     container_name: ms_mongo_db
     image: mongo
-    ports:
-      - "127.0.0.1:27017:27017"
-    volumes:
-      - mongo:/data
+    restart: always
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=Mupezeni0102?
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Mupezeni0102?  # Replace with a strong password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo:/data/db
 
   mongo-express:
     container_name: ms_mongo_express
     image: mongo-express
-    restart: always
-    ports:
-      - 8081:8081
+    restart: unless-stopped
     environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=Mupezeni0102?
-      - ME_CONFIG_MONGODB_SERVER=ms_mongo_db
-      - ME_CONFIG_MONGODB_PORT=27017
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_PORT: 27017
+      # Replace with credentials from the created user (not root)
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root  # Replace with your username
+      ME_CONFIG_MONGODB_ADMINPASSWORD: Mupezeni0102?  # Replace with a strong password
+    ports:
+      - "8081:8081"
 
   mail-dev:
     container_name: ms_mail_dev
@@ -101,5 +103,5 @@ networks:
 volumes:
   postgres:
   pgadmin:
-  mongo:
+  mongo: {}
 
