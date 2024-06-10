@@ -7,7 +7,7 @@
 package com.denyaar.notificationservice.kafka.order;
 
 public record Customer(
-        Integer id,
+        String id,
         String firstName,
         String lastName,
 

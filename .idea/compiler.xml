@@ -13,6 +13,7 @@
         <module name="product-service" />
         <module name="order-service" />
         <module name="notification-service" />
+        <module name="ms-gateway-service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -21,6 +22,7 @@
       <module name="config-server" options="-parameters" />
       <module name="customer-service" options="-parameters" />
       <module name="discovery" options="-parameters" />
+      <module name="ms-gateway-service" options="-parameters" />
       <module name="notification-service" options="-parameters" />
       <module name="order-service" options="-parameters" />
       <module name="payment-sevice" options="-parameters" />
