@@ -15,7 +15,7 @@ public record PurchaseRequest(
         Integer productId,
         @NotNull(message = "Quantity is required")
         @Positive(message = "Quantity must be greater than zero")
-        Integer quantity
+        double quantity
 
 ) {
 }
