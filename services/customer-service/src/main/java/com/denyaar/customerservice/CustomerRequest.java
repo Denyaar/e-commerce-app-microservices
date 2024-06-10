@@ -14,7 +14,7 @@ public record CustomerRequest(
         String firstName,
         String id,
         @NotNull(message = "Last name is required")
-        String latsName,
+        String lastName,
         @NotNull(message = "Email name is required")
         @Email(message = "Email is not valid")
         String email,

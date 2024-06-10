@@ -19,7 +19,7 @@ public class CustomerMapper {
         return Customer.builder()
                 .id(request.id())
                 .firstName(request.firstName())
-                .latsName(request.latsName())
+                .latsName(request.lastName())
                 .email(request.email())
                 .address(Address.builder()
                         .street(request.address().getStreet())

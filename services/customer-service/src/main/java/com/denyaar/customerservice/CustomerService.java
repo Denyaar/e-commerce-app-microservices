@@ -37,7 +37,7 @@ public class CustomerService {
         return Customer.builder()
                 .id(customer.getId())
                 .firstName(Objects.nonNull(request.firstName()) ? request.firstName() : customer.getFirstName())
-                .latsName(Objects.nonNull(request.latsName()) ? request.latsName() : customer.getLatsName())
+                .latsName(Objects.nonNull(request.lastName()) ? request.lastName() : customer.getLatsName())
                 .email(Objects.nonNull(request.email()) ? request.email() : customer.getEmail())
                 .address(Address.builder()
                         .street(Objects.nonNull(request.address()) && Objects.nonNull(request.address().getStreet()) ? request.address().getStreet() : customer.getAddress().getStreet())
