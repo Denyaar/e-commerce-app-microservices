@@ -34,8 +34,8 @@ services:
     image: mongo
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: mupezeni
-      MONGO_INITDB_ROOT_PASSWORD: 'Mupezeni0102?'
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Mupezeni0102?
     ports:
       - "27017:27017"
     volumes:
@@ -52,9 +52,8 @@ services:
     environment:
       ME_CONFIG_MONGODB_SERVER: ms_mongo_db
       ME_CONFIG_MONGODB_PORT: 27017
-      ME_CONFIG_MONGODB_ADMINUSERNAME: mupezeni
-      ME_CONFIG_MONGODB_ADMINPASSWORD: 'Mupezeni0102?'
-      ME_CONFIG_OPTIONS_EDITORTHEME: default
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: Mupezeni0102?
     ports:
       - "8081:8081"
     networks:
