@@ -49,7 +49,7 @@
     </div>
     <div class="content">
         <p>Dear <span th:text="${customerName}">${customerName}</span>,</p>
-        <p>This email confirms that your payment of <span th:text="${#numbers.formatCurrency(amount, 2, 'USD')}">${amount.formatCurrency(Locale.US)}</span> has been received for order reference <span th:text="${orderReference}">${orderReference}</span>.</p>
+        <p>This email confirms that your payment of <span th:text="${#numbers.formatDecimal(amount)}">${#numbers.formatDecimal(amount)}</span> has been received for order reference <span th:text="${orderReference}">${orderReference}</span>.</p>
         <p>Thank you for your business!</p>
     </div>
     <div class="footer">
