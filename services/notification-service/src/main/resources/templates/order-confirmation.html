@@ -76,11 +76,11 @@
             <tr th:each="product : ${products}">
                 <td th:text="${product.name}"></td>
                 <td th:text="${product.quantity}"></td>
-                <td th:text="${#numbers.formatCurrency(product.price, 2, 'USD')}">${product.price.formatCurrency(Locale.US)}</td>
+                <td th:text="${#numbers.formatDecimal(product.price)}">${#numbers.formatDecimal(product.price)}</td>
             </tr>
             </tbody>
         </table>
-        <p>Total Amount: <span th:text="${#numbers.formatCurrency(amount, 2, 'USD')}">${amount.formatCurrency(Locale.US)}</span></p>
+        <p>Total Amount: <span th:text="${#numbers.formatDecimal(amount)}">${#numbers.formatDecimal(amount)}</span></p>
         <p>Thank you for your order!</p>
     </div>
     <div class="footer">
