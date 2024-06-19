@@ -91,6 +91,16 @@ services:
       - "9411:9411"
     networks:
         - microservices-net
+#
+#  sms-dev:
+#    container_name: ms_sms_dev
+#    image: vf-sms-twilio
+#    ports:
+#      - 9000:9000
+#    environment:
+#      TWILIO_ACCOUNT_SID: AC6a165ff60d542ba1474239ec0ff29318
+#      TWILIO_AUTH_TOKEN: a0eac84f94ee2b933673ebc20364f4ad
+#      TWILIO_PHONE_NUMBER: +12019424747
 
 
   keycloak:
