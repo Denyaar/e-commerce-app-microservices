@@ -121,15 +121,16 @@ services:
 #  docker run -p 8090:8080 -p 50000:50000 -d --group-add 0 -v /var/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock --name jenkins jenkins/jenkins
   jenkins:
      image: jenkins/jenkins
+     container_name: jenkins
+     volumes:
+       - /var/jenkins_home:/var/jenkins_home jenkins/jenkins  #create this path
+       - /var/run/docker.sock:/var/run/docker.sock
      privileged: true
      user: mupezeni
      ports:
       - 8090:8080  #change this port if you have another service running on 8080
       - 50000:50000
-    container_name: jenkins
-    volumes:
-      - /var/jenkins_home:/var/jenkins_home jenkins/jenkins  #create this path 
-      - /var/run/docker.sock:/var/run/docker.sock
+
 
 
   keycloak:
