@@ -116,6 +116,9 @@ services:
 #      TWILIO_AUTH_TOKEN: a0eac84f94ee2b933673ebc20364f4ad
 #      TWILIO_PHONE_NUMBER: +12019424747
 
+
+
+#  docker run -p 8090:8080 -p 50000:50000 -d -v /var/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock --name jenkins jenkins/jenkins
   jenkins:
      image: jenkins/jenkins
      privileged: true
@@ -127,8 +130,8 @@ services:
     volumes:
       - /var/jenkins_home:/var/jenkins_home jenkins/jenkins  #create this path 
       - /var/run/docker.sock:/var/run/docker.sock
-      
-      
+
+
   keycloak:
     container_name: ms_keycloak
     image: quay.io/keycloak/keycloak:latest
