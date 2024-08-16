@@ -116,7 +116,19 @@ services:
 #      TWILIO_AUTH_TOKEN: a0eac84f94ee2b933673ebc20364f4ad
 #      TWILIO_PHONE_NUMBER: +12019424747
 
-
+  jenkins:
+     image: jenkins/jenkins
+     privileged: true
+     user: mupezeni
+     ports:
+      - 8090:8080  #change this port if you have another service running on 8080
+      - 50000:50000
+    container_name: jenkins
+    volumes:
+      - /var/jenkins_home:/var/jenkins_home jenkins/jenkins  #create this path 
+      - /var/run/docker.sock:/var/run/docker.sock
+      
+      
   keycloak:
     container_name: ms_keycloak
     image: quay.io/keycloak/keycloak:latest
@@ -129,6 +141,8 @@ services:
         - microservices-net
     command:
       - "start-dev"
+      
+
 
 
 networks:
