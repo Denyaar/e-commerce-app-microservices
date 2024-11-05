@@ -11,14 +11,16 @@ services:
       - discovery.type=single-node
       - "DISABLE_SECURITY_PLUGIN=true"
       - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
-    opensearch-dashboards:
-      image: opensearchproject/opensearch-dashboards:1.1.0
-      container_name: marketplace_os_dashboards
-      ports:
-        - 5601:5601
-      environment:
-        OPENSEARCH_HOSTS: '["http://marketplace-os:9200"]'
-        DISABLE_SECURITY_DASHBOARDS_PLUGIN: "true"
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:latest
+    container_name: marketplace_os_dashboards
+    ports:
+      - 5601:5601
+    environment:
+      OPENSEARCH_HOSTS: '["http://marketplace-os:9200"]'
+      DISABLE_SECURITY_DASHBOARDS_PLUGIN: "true"
+    depends_on:
+      - opensearch
 
 
   postgres:
