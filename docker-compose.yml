@@ -11,6 +11,7 @@ services:
       - discovery.type=single-node
       - "DISABLE_SECURITY_PLUGIN=true"
       - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+
   opensearch-dashboards:
     image: opensearchproject/opensearch-dashboards:latest
     container_name: marketplace_os_dashboards
@@ -80,8 +81,9 @@ services:
     image: "redis:latest"
     ports:
       - "6379:6379"
+    restart: unless-stopped
 
-#  mongo-express:
+  #  mongo-express:
 #    container_name: ms_mongo_express
 #    image: mongo-express
 #    restart: unless-stopped
@@ -154,6 +156,8 @@ services:
      ports:
       - 8090:8080  #change this port if you have another service running on 8080
       - 50000:50000
+     restart: unless-stopped
+
 
 
 
@@ -169,7 +173,9 @@ services:
         - microservices-net
     command:
       - "start-dev"
-      
+    restart: unless-stopped
+
+
 
 
 
