@@ -109,11 +109,26 @@ services:
 #      MAILDEV_USERNAME: root
 #      MAILDEV_PASSWORD: Mupezeni0102?
 
+#  zookeeper:
+#    image: wurstmeister/zookeeper
+#    container_name: ms_zookeeper
+#    ports:
+#      - "22181:2181"
+
   zookeeper:
     image: wurstmeister/zookeeper
     container_name: ms_zookeeper
     ports:
       - "22181:2181"
+    environment:
+      - ZOO_MAX_JVM_HEAP=2g    # Set JVM heap size if not already done
+    ulimits:
+      nofile:
+        soft: 65536  # Increase the soft limit for file descriptors
+        hard: 65536  # Increase the hard limit for file descriptors
+    mem_limit: 2g
+    mem_reservation: 1g
+
 
   kafka:
     image: wurstmeister/kafka
