@@ -1,5 +1,15 @@
 services:
 
+  meilisearch:
+    image: "getmeili/meilisearch:v0.26.1"
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:7700:7700"
+    volumes:
+      - /var/local/meilisearch:/data.ms
+    env_file:
+      - ./meilisearch.env
+
   opensearch:
     build: .
     container_name: marketplace_os
