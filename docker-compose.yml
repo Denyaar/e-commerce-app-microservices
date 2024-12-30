@@ -1,7 +1,7 @@
 services:
 
   meilisearch:
-    image: "getmeili/meilisearch:v0.26.1"
+    image: "getmeili/meilisearch:latest"
     restart: unless-stopped
     ports:
       - "127.0.0.1:7700:7700"
