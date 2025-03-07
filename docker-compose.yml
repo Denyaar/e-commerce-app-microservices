@@ -57,10 +57,10 @@ services:
   mongo:
     container_name: ms_mongo_db
     image: mongo
-    restart: always
+    restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: Mupezeni0102?
+      MONGO_INITDB_ROOT_PASSWORD: 'Mupezeni0102'
     ports:
       - "27017:27017"
     volumes:
@@ -187,4 +187,5 @@ volumes:
   postgres:
   pgadmin:
   mongo: {}
+
 
