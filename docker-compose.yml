@@ -77,6 +77,18 @@ services:
       - mongo:/data/db
     networks:
         - microservices-net
+
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra-container
+    ports:
+      - "9042:9042"
+    environment:
+      - CASSANDRA_USER=root
+      - CASSANDRA_PASSWORD=Mupezeni0102
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+
   rabbitmq:
     environment:
       RABBITMQ_DEFAULT_PASS: Mupezeni0102?
@@ -229,5 +241,6 @@ volumes:
   zookeeper: {}
   kafka: {}
   zipkin: {}
+  cassandra-data: {}
 
 
