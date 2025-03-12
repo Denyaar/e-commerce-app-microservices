@@ -1,14 +1,14 @@
 services:
-
-  meilisearch:
-    image: "getmeili/meilisearch:latest"
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:7700:7700"
-    volumes:
-      - /var/local/meilisearch:/data.ms
-    env_file:
-      - ./meilisearch.env
+#
+#  meilisearch:
+#    image: "getmeili/meilisearch:latest"
+#    restart: unless-stopped
+#    ports:
+#      - "127.0.0.1:7700:7700"
+#    volumes:
+#      - /var/local/meilisearch:/data.ms
+#    env_file:
+#      - ./meilisearch.env
 
   opensearch:
     build: .
@@ -95,7 +95,7 @@ services:
 
   redis-insight:
     image: redis/redisinsight:latest
-    restart: always
+    restart: unless-stopped
     ports:
       - "8001:8001"
     volumes:
