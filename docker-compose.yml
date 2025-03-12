@@ -81,6 +81,9 @@ services:
   cassandra:
     image: cassandra:latest
     container_name: cassandra-container
+    restart: unless-stopped
+    networks:
+      - microservices-net
     ports:
       - "9042:9042"
     environment:
@@ -112,6 +115,8 @@ services:
       - "8001:8001"
     volumes:
       - redis-insight:/data
+    networks:
+      - microservices-net
 
 
 #    docker run -d --name redisinsight -p 5540:5540 redis/redisinsight:latest
@@ -172,6 +177,8 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: localhost
       KAFKA_ZOOKEEPER_CONNECT: ms_zookeeper:2181
+    networks:
+      - microservices-net
 
   zipkin:
     image: openzipkin/zipkin
