@@ -93,6 +93,18 @@ services:
       - "6379:6379"
     restart: unless-stopped
 
+  redis-insight:
+    image: redis/redisinsight:latest
+    restart: always
+    ports:
+      - "8001:8001"
+    volumes:
+      - redis-insight:/data
+
+
+#    docker run -d --name redisinsight -p 5540:5540 redis/redisinsight:latest
+
+
   #  mongo-express:
 #    container_name: ms_mongo_express
 #    image: mongo-express
@@ -212,5 +224,10 @@ volumes:
   postgres:
   pgadmin:
   mongo: {}
+  redis-insight: {}
+  rabbitmq: {}
+  zookeeper: {}
+  kafka: {}
+  zipkin: {}
 
 
