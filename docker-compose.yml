@@ -118,6 +118,34 @@ services:
     networks:
       - microservices-net
 
+  minio:
+    image: quay.io/minio/minio
+    container_name: "epg-minio"
+    restart: unless-stopped
+    ports:
+      - "9050:9000"
+      - "9090:9090"
+    volumes:
+      - minio-data:/data
+    environment:
+      MINIO_ROOT_USER: root
+      MINIO_ROOT_PASSWORD: Mupezeni0102?
+    command: server /data --console-address ":9090"
+
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx1g
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+
 
 #    docker run -d --name redisinsight -p 5540:5540 redis/redisinsight:latest
 
@@ -247,7 +275,10 @@ volumes:
   rabbitmq: {}
   zookeeper: {}
   kafka: {}
+  minio-data: {}
   zipkin: {}
   cassandra-data: {}
+  esdata1:
+    driver: local
 
 
