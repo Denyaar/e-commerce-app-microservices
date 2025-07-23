@@ -87,7 +87,7 @@ services:
       - GS_USERNAME=root
       - GS_USER_PASSWORD=Mupezeni0102?
     ports:
-      - "5432:5432"
+      - "5433:5433"
     restart: unless-stopped
     volumes:
       - opengauss_data:/var/lib/opengauss/data
