@@ -78,6 +78,20 @@ services:
     networks:
         - microservices-net
 
+  opengauss:
+    image: opengauss/opengauss:latest
+    container_name: opengauss
+    privileged: true
+    environment:
+      - GS_PASSWORD=openGauss@123
+      - GS_USERNAME=root
+      - GS_USER_PASSWORD=Mupezeni0102?
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    volumes:
+      - opengauss_data:/var/lib/opengauss/data
+
   cassandra:
     image: cassandra:latest
     container_name: cassandra-container
@@ -271,6 +285,7 @@ networks:
 
 volumes:
   postgres:
+  opengauss_data:
   pgadmin:
   mongo: {}
   redis-insight: {}
