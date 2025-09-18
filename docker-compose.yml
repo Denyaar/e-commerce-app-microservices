@@ -33,6 +33,22 @@ services:
     depends_on:
       - opensearch
 
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: unless-stopped
+    ports:
+      - "3307:3306"  # Maps host port 3307 to container port 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: Mupezeni0102?
+      MYSQL_DATABASE: myapp
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Mupezeni0102?
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - microservices-net
+
 
   postgres:
     container_name: ms_pd_sql
@@ -87,7 +103,7 @@ services:
       - GS_USERNAME=root
       - GS_USER_PASSWORD=Mupezeni0102?
     ports:
-      - "5433:5433"
+      - "5432:5432"
     restart: unless-stopped
     volumes:
       - opengauss_data:/var/lib/opengauss/data
@@ -285,6 +301,7 @@ networks:
 
 volumes:
   postgres:
+  mysql_data: {}
   opengauss_data:
   pgadmin:
   mongo: {}
