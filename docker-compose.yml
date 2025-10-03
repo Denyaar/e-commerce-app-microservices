@@ -50,12 +50,13 @@ services:
   postgres:
     container_name: ms_pd_sql
     image: postgres
+    user: postgres  # Add this line
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: Mupezeni0102?
-      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: postgres
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
     networks:
@@ -289,7 +290,18 @@ services:
     restart: unless-stopped
 
 
-
+  ecopay-app:
+    image: zzzzzzzzzz
+    container_name: ECOPAY-APP
+    ports:
+      - "8080:8080"
+    environment:
+      - REDIS_HOST=redis  # Use service name, not container name
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+    networks:
+      - microservices-net
 
 
 networks:
@@ -297,7 +309,7 @@ networks:
     driver: bridge
 
 volumes:
-  postgres:
+  postgres_data: {}
   mysql_data: {}
   opengauss_data:
   pgadmin:
