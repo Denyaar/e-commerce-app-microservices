@@ -279,11 +279,11 @@ services:
     container_name: ms_keycloak
     image: quay.io/keycloak/keycloak:latest
     ports:
-      - 8082:8082
+      - 8443:8443
     environment:
       KC_FEATURES: scripts
-      KEYCLOAK_ADMIN: mupezeni
-      KEYCLOAK_ADMIN_PASSWORD: 'Mupezeni0102?'
+      KC_BOOTSTRAP_ADMIN_USERNAME: mupezeni
+      KC_BOOTSTRAP_ADMIN_PASSWORD: 'Mupezeni0102?'
     networks:
       - microservices-net
     command:
