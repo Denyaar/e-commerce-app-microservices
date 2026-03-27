@@ -178,6 +178,20 @@ services:
       timeout: 20s
       retries: 3
 
+
+  sqlite:
+    image: hibitdev/sqlite:latest
+    container_name: ms_sqlite
+    hostname: sqlite.hibit
+    restart: unless-stopped
+    ports:
+      - "8191:8191"
+    volumes:
+      - sqlite:/db
+    command: [ "tail", "-f", "/dev/null" ]
+
+
+
 #
 #
 #  minio:
@@ -386,6 +400,7 @@ volumes:
   opengauss_data:
   pgadmin:
   mongo: {}
+  sqlite: {}
   redis-insight: {}
   rabbitmq: {}
   zookeeper: {}
