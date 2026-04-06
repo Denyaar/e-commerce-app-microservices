@@ -19,6 +19,25 @@ services:
 #    env_file:
 #      - ./meilisearch.env
 
+
+  meilisearch:
+    image: 'getmeili/meilisearch:latest'
+    restart: unless-stopped
+    environment:
+      MEILI_MASTER_KEY: 'ROOT_MUPEZENI_MASTER_KEY_0102'  # Set a strong master key for security
+#      MEILI_MASTER_KEY: '${MEILISEARCH_MASTER_KEY}'
+    ports:
+      - "7700:7700"
+#      - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
+    volumes:
+      - meilisearch:/meili_data
+    networks:
+      - microservices-net
+    healthcheck:
+      test: set -o pipefail;curl -fsS http://localhost:7700/health | grep -q '{"status":"available"}'
+      retries: 3
+      timeout: 5s
+
   opensearch:
     build: .
     container_name: marketplace_os
@@ -399,6 +418,7 @@ volumes:
   mysql_data: {}
   opengauss_data:
   pgadmin:
+  meilisearch: {}
   mongo: {}
   sqlite: {}
   redis-insight: {}
