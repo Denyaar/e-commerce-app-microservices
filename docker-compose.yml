@@ -351,6 +351,7 @@ services:
       KC_FEATURES: scripts
       KC_BOOTSTRAP_ADMIN_USERNAME: mupezeni
       KC_BOOTSTRAP_ADMIN_PASSWORD: 'Mupezeni0102?'
+      KC_HTTP_ENABLED: "true"
     networks:
       - microservices-net
     command:
