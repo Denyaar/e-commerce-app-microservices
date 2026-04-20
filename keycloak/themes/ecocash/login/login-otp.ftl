@@ -7,27 +7,8 @@
 
     <div id="kc-otp-container">
         <form id="kc-otp-form" action="${url.loginAction}" method="post">
-            <div class="form-group">
-                <label class="${properties.kcLabelClass!}">${msg("loginOtpDeliveryMethod")}</label>
-                <div class="otp-method-list">
-                    <label class="otp-method-option">
-                        <input type="radio" name="otpType" value="sms" <#if !(otpType??) || otpType == "sms">checked</#if>>
-                        <span>
-                            <span class="otp-method-title">${msg("loginOtpSmsOption")}</span>
-                            <span class="otp-method-copy">${msg("loginOtpSmsOptionHelp")}</span>
-                        </span>
-                    </label>
-                    <label class="otp-method-option">
-                        <input type="radio" name="otpType" value="email" <#if otpType?? && otpType == "email">checked</#if>>
-                        <span>
-                            <span class="otp-method-title">${msg("loginOtpEmailOption")}</span>
-                            <span class="otp-method-copy">${msg("loginOtpEmailOptionHelp")}</span>
-                        </span>
-                    </label>
-                </div>
-            </div>
-
             <#if otpSent?? && otpSent>
+                <input type="hidden" name="otpType" value="${otpType!''}">
                 <p class="instruction">
                     <#if otpType?? && otpType == "sms">
                         ${msg("loginOtpSmsInstruction")}
@@ -69,9 +50,22 @@
             <#else>
                 <p class="instruction">${msg("loginOtpChooseInstruction")}</p>
 
-                <div id="kc-form-buttons" class="form-group">
-                    <button tabindex="1" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}"
-                            name="sendCode" value="true" id="kc-send-code" type="submit">${msg("loginOtpSendCode")}</button>
+                <div class="form-group">
+                    <label class="${properties.kcLabelClass!}">${msg("loginOtpDeliveryMethod")}</label>
+                    <div class="otp-method-list otp-method-actions">
+                        <button tabindex="1" class="otp-method-option otp-method-button" name="otpType" value="sms" type="submit">
+                            <span>
+                                <span class="otp-method-title">${msg("loginOtpSmsOption")}</span>
+                                <span class="otp-method-copy">${msg("loginOtpSmsOptionHelp")}</span>
+                            </span>
+                        </button>
+                        <button tabindex="2" class="otp-method-option otp-method-button" name="otpType" value="email" type="submit">
+                            <span>
+                                <span class="otp-method-title">${msg("loginOtpEmailOption")}</span>
+                                <span class="otp-method-copy">${msg("loginOtpEmailOptionHelp")}</span>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </#if>
         </form>
