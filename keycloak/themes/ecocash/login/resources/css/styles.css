@@ -55,6 +55,12 @@ body {
   overflow: hidden;
 }
 
+.login-pf-page__wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 /* Background Grid Pattern */
 .login-pf-page::before {
   content: '';
@@ -120,6 +126,10 @@ body {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
+}
+
+.kc-form-header {
+  margin-bottom: 2rem;
 }
 
 .kc-logo-text {
@@ -291,6 +301,13 @@ button[type="submit"]:hover,
 
 .kc-feedback-text {
   margin: 0;
+}
+
+.kc-input-error-message {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 13px;
+  color: #fca5a5;
 }
 
 .instruction {

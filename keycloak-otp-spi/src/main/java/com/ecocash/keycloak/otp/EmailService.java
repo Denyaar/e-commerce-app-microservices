@@ -30,12 +30,6 @@ public class EmailService {
         this.fromEmail = getEnv(OTPConfig.SMTP_FROM_EMAIL_ENV, "noreply@ecocash.co.zw");
         this.fromName = getEnv(OTPConfig.SMTP_FROM_NAME_ENV, "EcoCash");
         this.useTLS = Boolean.parseBoolean(getEnv(OTPConfig.SMTP_USE_TLS_ENV, "true"));
-
-        if (isConfigured()) {
-            logger.info("Email SMTP service initialized");
-        } else {
-            logger.warn("Email SMTP service not configured. Email OTP will not work.");
-        }
     }
 
     /**

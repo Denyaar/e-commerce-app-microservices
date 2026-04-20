@@ -20,13 +20,6 @@ public class SMSService {
         this.accountSid = getEnv(OTPConfig.TWILIO_ACCOUNT_SID_ENV);
         this.authToken = getEnv(OTPConfig.TWILIO_AUTH_TOKEN_ENV);
         this.fromPhoneNumber = getEnv(OTPConfig.TWILIO_PHONE_NUMBER_ENV);
-
-        if (isConfigured()) {
-            Twilio.init(accountSid, authToken);
-            logger.info("Twilio SMS service initialized");
-        } else {
-            logger.warn("Twilio SMS service not configured. SMS OTP will not work.");
-        }
     }
 
     /**
@@ -48,6 +41,8 @@ public class SMSService {
         }
 
         try {
+            Twilio.init(accountSid, authToken);
+
             String messageBody = String.format(
                 "Your EcoCash verification code is: %s\n\nThis code will expire in %d minutes.\n\nIf you didn't request this code, please ignore this message.",
                 otpCode,
