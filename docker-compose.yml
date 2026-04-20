@@ -339,21 +339,55 @@ services:
       - 50000:50000
      restart: unless-stopped
 
-
+#
 
 
   keycloak:
     container_name: ms_keycloak
     image: quay.io/keycloak/keycloak:26.5.6
+    depends_on:
+      - postgres
     ports:
       - 8443:8080
     environment:
-      KC_FEATURES: scripts
+      # Keycloak Admin
       KC_BOOTSTRAP_ADMIN_USERNAME: mupezeni
       KC_BOOTSTRAP_ADMIN_PASSWORD: 'Mupezeni0102?'
+
+      # Keycloak Configuration
+      KC_FEATURES: scripts
       KC_HTTP_ENABLED: "true"
       KC_HOSTNAME: "localhost"
       KC_HOSTNAME_STRICT: "false"
+      KC_HEALTH_ENABLED: "true"
+      KC_METRICS_ENABLED: "true"
+
+      # Database Configuration (PostgreSQL)
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://ms_pd_sql:5432/keycloak
+      KC_DB_USERNAME: root
+      KC_DB_PASSWORD: 'Mupezeni0102?'
+      KC_DB_SCHEMA: public
+
+      # Twilio Configuration (SMS OTP)
+      TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID:-}
+      TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN:-}
+      TWILIO_PHONE_NUMBER: ${TWILIO_PHONE_NUMBER:-}
+
+      # SMTP Configuration (Email OTP)
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM_EMAIL: ${SMTP_FROM_EMAIL:-noreply@ecocash.co.zw}
+      SMTP_FROM_NAME: ${SMTP_FROM_NAME:-EcoCash}
+      SMTP_USE_TLS: ${SMTP_USE_TLS:-true}
+
+    volumes:
+      # Custom OTP SPI Provider
+      - ../ZEcocash-Projects/developer-portal/keycloak-otp-spi/target/keycloak-otp-spi.jar:/opt/keycloak/providers/keycloak-otp-spi.jar
+      # Custom Theme
+      - ./keycloak/themes/ecocash:/opt/keycloak/themes/ecocash
 
     networks:
       - microservices-net

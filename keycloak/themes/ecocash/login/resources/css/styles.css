@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* EcoCash Brand Colors */
+  --eco-blue: #0052A5;
+  --eco-blue-dark: #00398A;
+  --eco-blue-light: #1A6FCC;
+  --eco-red: #E30613;
+  --eco-red-dark: #B80510;
+
+  /* Dark Theme Colors */
+  --bg-canvas: #07091A;
+  --bg-sidebar: #090D22;
+  --bg-surface: #0D1230;
+  --bg-elevated: #111840;
+  --bg-card: #0F1535;
+  --bg-input: #0A0F28;
+  --border: #1A2248;
+  --border-bright: #243060;
+  --text-primary: #EEF2FF;
+  --text-secondary: #8B9CC8;
+  --text-muted: #4A5680;
+  --text-accent: #60A5FA;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 15px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.login-pf-page {
+  background-color: var(--bg-canvas);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Grid Pattern */
+.login-pf-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+  background-size: 40px 40px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Background Wave SVG */
+.login-pf-page::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 320px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 82, 165, 0.08) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+#kc-container-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 480px;
+}
+
+#kc-container {
+  background-color: rgba(10, 15, 40, 0.95);
+  border: 1px solid var(--border-bright);
+  border-radius: 16px;
+  padding: 3rem;
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Decorative Dot Pattern - Bottom Right */
+#kc-container::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--eco-blue) 2px, transparent 2px);
+  background-size: 15px 15px;
+}
+
+#kc-header {
+  margin-bottom: 2rem;
+}
+
+#kc-header-wrapper {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.kc-logo-text {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--eco-blue);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+#kc-info {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+#kc-info-wrapper {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+#kc-info-wrapper a {
+  color: var(--eco-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#kc-info-wrapper a:hover {
+  text-decoration: underline;
+}
+
+#kc-form {
+  margin-top: 0;
+}
+
+#kc-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.pf-c-form-control,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.pf-c-form-control:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus {
+  border-color: var(--eco-blue);
+  box-shadow: 0 0 0 3px rgba(0, 82, 165, 0.15);
+}
+
+.pf-c-form-control::placeholder,
+input::placeholder {
+  color: var(--text-muted);
+}
+
+.pf-c-button,
+button[type="submit"],
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, var(--eco-blue), var(--eco-blue-dark));
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 82, 165, 0.3);
+}
+
+.pf-c-button:hover,
+button[type="submit"]:hover,
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--eco-blue-dark), #002966);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 82, 165, 0.4);
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--eco-blue);
+  flex-shrink: 0;
+}
+
+.checkbox label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.alert {
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alert-error {
+  background: rgba(227, 6, 19, 0.15);
+  border: 1px solid rgba(227, 6, 19, 0.3);
+  color: #fca5a5;
+}
+
+.alert-warning {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fbbf24;
+}
+
+.alert-success {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #86efac;
+}
+
+.alert-info {
+  background: rgba(0, 82, 165, 0.15);
+  border: 1px solid rgba(0, 82, 165, 0.3);
+  color: #60A5FA;
+}
+
+.kc-feedback-text {
+  margin: 0;
+}
+
+.instruction {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+#kc-locale {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+}
+
+#kc-locale ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#kc-locale-dropdown a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+#kc-locale-dropdown a:hover {
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+/* Password visibility toggle */
+.pf-c-form__group-control {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.password-toggle:hover {
+  color: var(--text-primary);
+}
+
+/* Forgot password link */
+#kc-form-options {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+#kc-form-options a {
+  font-size: 13px;
+  color: var(--eco-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#kc-form-options a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #kc-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .login-pf-page {
+    padding: 1rem 0.5rem;
+  }
+}
