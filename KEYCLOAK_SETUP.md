@@ -41,9 +41,12 @@ docker-compose up -d keycloak
 
 1. **Authentication** → **Flows**
 2. **Copy** "Browser" flow → Name: "Browser with OTP"
-3. **Add execution** → "EcoCash OTP Authentication"
-4. Set to **REQUIRED**
-5. **Bind** → Set as Browser Flow
+3. Inside the copied flow, remove or disable the default **Username Password Form**
+4. **Add execution** → "EcoCash Username Password Form"
+5. Set it to **REQUIRED**
+6. **Add execution** → "EcoCash OTP Authentication"
+7. Set it to **REQUIRED**
+8. **Bind** → Set as Browser Flow
 
 ## 7️⃣ Apply Custom Theme
 

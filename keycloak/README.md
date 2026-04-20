@@ -135,9 +135,12 @@ Login with:
 
 1. Go to **Authentication** → **Flows**
 2. Click **Copy** on the "Browser" flow → Name it "Browser with OTP"
-3. Click **Add execution** → Select "EcoCash OTP Authentication"
-4. Set requirement to **REQUIRED** or **ALTERNATIVE**
-5. Click **Bind** at the top → Set as **Browser Flow**
+3. In the copied flow, remove or disable the default **Username Password Form**
+4. Click **Add execution** → Select "EcoCash Username Password Form"
+5. Set that execution to **REQUIRED**
+6. Click **Add execution** → Select "EcoCash OTP Authentication"
+7. Set that execution to **REQUIRED**
+8. Click **Bind** at the top → Set as **Browser Flow**
 
 ### Step 7: Set Custom Theme
 

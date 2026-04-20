@@ -7,7 +7,7 @@
     <div id="kc-form">
       <div id="kc-form-wrapper">
         <#if realm.password>
-            <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
+            <form id="kc-form-login" onsubmit="return submitLoginForm();" action="${url.loginAction}" method="post">
                 <#if !usernameHidden??>
                     <div class="form-group">
                         <label for="username" class="${properties.kcLabelClass!}">
@@ -48,6 +48,29 @@
                     </#if>
 
                 </div>
+
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label class="${properties.kcLabelClass!}" style="margin-bottom: 0.75rem; display: block;">${msg("loginOtpDeliveryMethod")}</label>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <label style="display: flex; align-items: center; cursor: pointer; padding: 0.75rem; border: 2px solid #ddd; border-radius: 6px; transition: all 0.2s;">
+                            <input type="radio" id="otp-sms" name="otpType" value="sms" checked
+                                   style="margin-right: 0.75rem; cursor: pointer; width: 18px; height: 18px; accent-color: #0066cc;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; margin-bottom: 0.25rem;">${msg("loginOtpSmsOption")}</div>
+                                <div style="font-size: 0.875rem; color: #666;">${msg("loginOtpSmsOptionHelp")}</div>
+                            </div>
+                        </label>
+                        <label style="display: flex; align-items: center; cursor: pointer; padding: 0.75rem; border: 2px solid #ddd; border-radius: 6px; transition: all 0.2s;">
+                            <input type="radio" id="otp-email" name="otpType" value="email"
+                                   style="margin-right: 0.75rem; cursor: pointer; width: 18px; height: 18px; accent-color: #0066cc;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; margin-bottom: 0.25rem;">${msg("loginOtpEmailOption")}</div>
+                                <div style="font-size: 0.875rem; color: #666;">${msg("loginOtpEmailOptionHelp")}</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <#if realm.rememberMe && !usernameHidden??>
                         <div class="checkbox">
@@ -59,6 +82,7 @@
 
                 <div id="kc-form-buttons" class="form-group">
                     <input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>/>
+                    <input type="hidden" id="selected-otp-type-hidden" name="selectedOtpTypeHidden" value="email"/>
                     <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
                 </div>
             </form>
@@ -94,5 +118,41 @@
             </div>
         </#if>
     </#if>
+
+    <script>
+        // Update hidden field when radio selection changes
+        document.querySelectorAll('input[name="otpType"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                document.getElementById('selected-otp-type-hidden').value = this.value;
+            });
+        });
+
+        // Set initial value
+        var checkedRadio = document.querySelector('input[name="otpType"]:checked');
+        if (checkedRadio) {
+            document.getElementById('selected-otp-type-hidden').value = checkedRadio.value;
+        }
+
+        function submitLoginForm() {
+            // Get selected OTP type
+            var otpType = document.querySelector('input[name="otpType"]:checked')?.value || 'email';
+
+            // Update hidden field
+            document.getElementById('selected-otp-type-hidden').value = otpType;
+
+            // Store in cookie for OTP authenticator to read
+            document.cookie = "selectedOtpType=" + otpType + "; path=/; SameSite=Lax; max-age=300";
+
+            // Store in sessionStorage as backup
+            try {
+                sessionStorage.setItem('selectedOtpType', otpType);
+            } catch(e) {}
+
+            // Disable submit button to prevent double submission
+            document.getElementById('kc-login').disabled = true;
+
+            return true;
+        }
+    </script>
 
 </@layout.registrationLayout>
