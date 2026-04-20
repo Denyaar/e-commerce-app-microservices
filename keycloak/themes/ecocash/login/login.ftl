@@ -29,7 +29,12 @@
                 </#if>
 
                 <div class="form-group">
-                    <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
+                    <div class="field-header">
+                        <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
+                        <#if realm.resetPasswordAllowed>
+                            <a tabindex="5" class="field-link" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a>
+                        </#if>
+                    </div>
 
                     <input tabindex="2" id="password" class="${properties.kcInputClass!}" name="password" type="password" autocomplete="current-password"
                            aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
@@ -43,13 +48,6 @@
                     </#if>
 
                 </div>
-
-                <div id="kc-form-options">
-                    <#if realm.resetPasswordAllowed>
-                        <span><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></span>
-                    </#if>
-                </div>
-
                 <div class="form-group">
                     <#if realm.rememberMe && !usernameHidden??>
                         <div class="checkbox">
