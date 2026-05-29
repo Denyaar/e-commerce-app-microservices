@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${msg("emailForgotTitle")} | EcoCash Developer SandBox</title>
     <link href="${url.resourcesPath}/css/open-api-auth.css" rel="stylesheet">
-    <#if recaptchaRequired??>
-        <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldh-espAAAAAGMD9FUearLzwA4Xy1qkfj_Ls0LA"></script>
-    </#if>
 </head>
 <body class="open-api-auth compact-auth">
 <div class="background-grid"></div>
@@ -45,23 +42,5 @@
     <p class="footer-note">Remember your password? <a href="${url.loginUrl}">Login here.</a></p>
 </main>
 
-<#if recaptchaRequired??>
-    <script>
-        (function () {
-            var form = document.getElementById('kc-reset-password-form');
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
-                grecaptcha.enterprise.execute('6Ldh-espAAAAAGMD9FUearLzwA4Xy1qkfj_Ls0LA', {action: 'reset'}).then(function (token) {
-                    var recaptchaResponseInput = document.createElement('input');
-                    recaptchaResponseInput.setAttribute('type', 'hidden');
-                    recaptchaResponseInput.setAttribute('name', 'g-recaptcha-response');
-                    recaptchaResponseInput.setAttribute('value', token);
-                    form.appendChild(recaptchaResponseInput);
-                    form.submit();
-                });
-            });
-        })();
-    </script>
-</#if>
 </body>
 </html>

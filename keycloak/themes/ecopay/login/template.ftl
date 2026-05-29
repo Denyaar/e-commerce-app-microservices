@@ -9,14 +9,12 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width"/>
-        <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+        <link rel="icon" type="image/x-icon" href="${url.resourcesPath}/favicon.ico"/>
         <meta name="generator" content="Astro v4.9.3"/>
         <title>EcoPay</title>
         <script defer
                 src="https://unpkg.com/@colinaut/alpinejs-plugin-simple-validate@1/dist/alpine.validate.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-        <link rel="stylesheet" href="_ecopay/styles.css"/>
-        <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldh-espAAAAAGMD9FUearLzwA4Xy1qkfj_Ls0LA"></script>
 
         <#if properties.styles?has_content>
             <#list properties.styles?split(' ') as style>

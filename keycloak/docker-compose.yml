@@ -1,5 +1,3 @@
-version: '3'
-
 volumes:
   keycloak-db-data:
     driver: local
@@ -18,6 +16,9 @@ services:
       POSTGRES_PASSWORD: My863Keycloak
   keycloak:
     image: keycloak-spi:latest
+    build:
+      context: ..
+      dockerfile: keycloak/Dockerfile
     container_name: open-api-keycloak
     environment:
       KC_HOSTNAME_STRICT: 'false'

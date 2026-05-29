@@ -16,8 +16,6 @@
         </#if>
         <head>
 
-            <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldh-espAAAAAGMD9FUearLzwA4Xy1qkfj_Ls0LA"></script>
-
         </head>
 
 

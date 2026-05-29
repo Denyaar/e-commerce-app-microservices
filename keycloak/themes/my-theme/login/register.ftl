@@ -62,14 +62,6 @@
             </div>
             </#if>
 
-            <#if recaptchaRequired??>
-            <div class="form-group">
-                <div class="${properties.kcInputWrapperClass!}">
-                    <div class="g-recaptcha" data-size="compact" data-sitekey="${recaptchaSiteKey}"></div>
-                </div>
-            </div>
-            </#if>
-
             <div class="${properties.kcFormGroupClass!}">
 
                             <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">

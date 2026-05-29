@@ -1,5 +1,5 @@
 #FROM quay.io/keycloak/keycloak:21.0 as builder
-FROM quay.io/keycloak/keycloak:26.5.6 as builder
+FROM quay.io/keycloak/keycloak:26.5.6 AS builder
 
 # Configure a database vendor
 ENV KC_DB=postgres
@@ -14,9 +14,11 @@ RUN ln -sf /usr/share/zoneinfo/Africa/Harare /etc/localtime && echo "Africa/Hara
 # Switch back to the non-root user
 USER 1000
 
-COPY spi/keycloak-captcha-spi-1.0-SNAPSHOT.jar /opt/keycloak/providers/zw.co.ecocashholdings.keycloak-recaptcha-provider.jar
+COPY keycloak/spi/keycloak-captcha-spi-1.0-SNAPSHOT.jar /opt/keycloak/providers/zw.co.ecocashholdings.keycloak-recaptcha-provider.jar
 
-COPY spi/libs/* /opt/keycloak/providers/
+COPY keycloak-otp-spi/target/keycloak-otp-spi.jar /opt/keycloak/providers/keycloak-otp-spi.jar
+
+COPY keycloak/spi/libs/* /opt/keycloak/providers/
 
 #COPY server.keystore conf/server.keystore
 #COPY star_ecocashholdings_co_zw.crt .
@@ -43,9 +45,10 @@ FROM quay.io/keycloak/keycloak:26.5.6
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
 
-COPY ./themes/my-theme/ /opt/keycloak/themes/my-theme
-COPY ./themes/ecopay/ /opt/keycloak/themes/ecopay
-COPY ./themes/open-api-theme/ /opt/keycloak/themes/open-api-theme
+COPY keycloak/themes/my-theme/ /opt/keycloak/themes/my-theme
+COPY keycloak/themes/ecopay/ /opt/keycloak/themes/ecopay
+COPY keycloak/themes/ecopay/ /opt/keycloak/themes/ecocash
+COPY keycloak/themes/open-api-theme/ /opt/keycloak/themes/open-api-theme
 #COPY eip_open_api.json  /opt/keycloak/data/import/eip-open-api.json
 
 

@@ -168,32 +168,6 @@
             </p>
 
 
-            <#if recaptchaRequired??>
-                <script>
-                    function onSubmit(token) {
-                        // Handle the form submission and reCAPTCHA token
-                        console.log("Submitting Captcha Result");
-                        var form = document.getElementById('kc-reset-password-form');
-                        var recaptchaResponseInput = document.createElement('input');
-                        recaptchaResponseInput.setAttribute('type', 'hidden');
-                        recaptchaResponseInput.setAttribute('name', 'g-recaptcha-response');
-                        recaptchaResponseInput.setAttribute('value', token);
-                        form.appendChild(recaptchaResponseInput);
-                        form.submit();
-                    }
-
-                    document.getElementById('kc-reset-password-form').addEventListener('submit', function (event) {
-                        console.log("Submit");
-                        event.preventDefault(); // Prevent the form from submitting immediately
-                        grecaptcha.enterprise.execute('6Ldh-espAAAAAGMD9FUearLzwA4Xy1qkfj_Ls0LA', {action: 'reset'})
-                            .then(function (token) {
-                                console.log("Token " + token)
-                                onSubmit(token);
-                            });
-
-                    });
-                </script>
-            </#if>
         </form>
 
 
