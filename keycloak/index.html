@@ -1,0 +1,121 @@
+<html lang="en" dir="ltr" class="light">
+
+<head>
+
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Elstar - React Tailwind Admin">
+    <title>Elstar - React Admin Template</title>
+    <link href="custom.css" rel="stylesheet"/>
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+        <div class="app-layout-blank flex flex-auto flex-col h-[100vh]">
+            <div class="h-full flex flex-auto flex-col justify-between">
+                <main class="h-full">
+                    <div class="page-container relative h-full flex flex-auto flex-col">
+                        <div class="h-full">
+                            <div
+                                class="container mx-auto flex flex-col flex-auto items-center justify-center min-w-0 h-full">
+                                <div class="card min-w-[320px] md:min-w-[450px] card-shadow" role="presentation">
+                                    <div class="card-body md:p-10">
+                                        <div class="text-center">
+                                            <div class="logo" style="width: auto;"><img class="mx-auto"
+                                                    src="./ecocash-logo.png" alt="Elstar logo"></div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="mb-4">
+                                                <h3 class="mb-1">Ecocash Open API Developer Portal</h3>
+                                                <p>Please enter your credentials to sign in!</p>
+                                            </div>
+                                            <div>
+                                                <form action="#">
+                                                    <div class="form-container vertical">
+                                                        <div class="form-item vertical"><label
+                                                                class="form-label mb-2">User Name</label>
+                                                            <div class=""><input
+                                                                    class="input input-md h-11 focus:ring-indigo-600 focus-within:ring-indigo-600 focus-within:border-indigo-600 focus:border-indigo-600"
+                                                                    type="text" name="userName" autocomplete="off"
+                                                                    placeholder="User Name" value=""></div>
+                                                        </div>
+                                                        <div class="form-item vertical"><label
+                                                                class="form-label mb-2">Password</label>
+                                                            <div class=""><span class="input-wrapper undefined"><input
+                                                                        class="input input-md h-11 focus:ring-indigo-600 focus-within:ring-indigo-600 focus-within:border-indigo-600 focus:border-indigo-600"
+                                                                        type="password" name="password"
+                                                                        autocomplete="off" placeholder="Password"
+                                                                        value="" style="padding-right: 2.25rem;">
+                                                                    <div class="input-suffix-end"><span
+                                                                            class="cursor-pointer text-xl"><svg
+                                                                                stroke="currentColor" fill="none"
+                                                                                stroke-width="2" viewBox="0 0 24 24"
+                                                                                aria-hidden="true" height="1em"
+                                                                                width="1em"
+                                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                                <path stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                                                                </path>
+                                                                            </svg></span></div>
+                                                                </span></div>
+                                                        </div>
+                                                        <div class="flex justify-between mb-6"><label
+                                                                class="checkbox-label mb-0"><input
+                                                                    class="checkbox text-indigo-600" type="checkbox"
+                                                                    name="rememberMe" form="[object Object]"
+                                                                    value="true" checked=""><span
+                                                                    class="ltr:ml-2 rtl:mr-2">Remember
+                                                                    Me</span></label><a
+                                                                class="text-indigo-600 hover:underline"
+                                                                href="/auth/forgot-password-simple">Forgot Password?</a>
+                                                        </div><button
+                                                            class="button bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white radius-round h-11 px-8 py-2 w-full"
+                                                            type="submit">Sign In</button>
+                                                        <div class="mt-4 text-center"><span>Don't have an account yet?
+                                                            </span><a class="text-indigo-600 hover:underline"
+                                                                href="/auth/sign-up-simple">Sign up</a></div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+<!--            <div-->
+<!--                class="fixed ltr:right-0 rtl:left-0 top-96 p-3 ltr:rounded-tl-md ltr:rounded-bl-md rtl:rounded-tr-md rtl:rounded-br-md text-white text-xl cursor-pointer select-none bg-indigo-600">-->
+<!--                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"-->
+<!--                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">-->
+<!--                    <path stroke-linecap="round" stroke-linejoin="round"-->
+<!--                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">-->
+<!--                    </path>-->
+<!--                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>-->
+<!--                </svg>-->
+<!--            </div>-->
+            <div class="text-2xl header-action-item header-action-item-hoverable hidden"><svg stroke="currentColor"
+                    fill="none" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" height="1em" width="1em"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                    </path>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg></div>
+        </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+
+
+    <div class="drawer-portal"></div>
+</body>
+
+</html>

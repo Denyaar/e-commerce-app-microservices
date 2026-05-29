@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+     environment {
+            KUBECONFIG = credentials('staging-creds')
+            KUBECONFIG_PROD = credentials('fintech-production-auth')
+            KUBECONFIG_EPG_STAGING = credentials('epg-staging-cluster')
+        }
+    stages {
+
+
+        stage('building docker image') {
+            steps {
+                sh "sudo docker build -t  registry.cassavasmartech.co.zw/fintech/open-api-keycloak:${env.GIT_COMMIT} ."
+            }
+        }
+
+        stage('Push image to registry') {
+            steps {
+                sh "sudo docker push registry.cassavasmartech.co.zw/fintech/open-api-keycloak:${env.GIT_COMMIT}"
+            }
+        }
+
+        stage('Deploying Keycloak...') {
+            steps {
+                script {
+                    if (env.BRANCH_NAME == 'production') {
+                        input message: "Continue Deployment?", ok: "Yes, Deploy."
+
+                       sh "sudo ssh nmutonhodza@${env.TARGET_HOST} kubectl -n ${env.K_NAMESPACE} set image deployment/${env.K_DEPLOYMENT} ${env.K_DEPLOYMENT}=registry.cassavasmartech.co.zw/fintech/open-api-keycloak:${env.GIT_COMMIT} --kubeconfig=/home/nmutonhodza/.kube/config"
+                    }
+
+                  else if (env.BRANCH_NAME == 'staging') {
+                     withCredentials([file(credentialsId: 'epg-staging-cluster', variable: 'KUBECONFIG')]){
+
+                         sh "kubectl -n ecopay set image deployment/keycloak keycloak=registry.cassavasmartech.co.zw/fintech/open-api-keycloak:${env.GIT_COMMIT}"
+                      }
+                    }
+
+                }
+            }
+        }
+
+    }
+}
+

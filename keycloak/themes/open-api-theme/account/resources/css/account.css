@@ -1,0 +1,317 @@
+/* =============================================================
+   EcoCash Account Console — portal-matched theme
+   Design tokens sourced from developer-portal/frontend-typescript
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
+/* ------------------------------------------------------------------
+   HIDE APPLICATIONS NAV ITEM
+   ------------------------------------------------------------------ */
+.pf-v5-c-nav__item:has(a[href*="applications"]),
+.pf-v5-c-nav__item:has(a[href*="Applications"]) {
+    display: none !important;
+}
+
+/* ------------------------------------------------------------------
+   LIGHT MODE  (no .pf-v5-theme-dark on <html>)
+   ------------------------------------------------------------------ */
+:root {
+    /* Font — matches portal */
+    --pf-v5-global--FontFamily--sans-serif:         'DM Sans', 'Proxima Nova', ui-sans-serif, system-ui, sans-serif;
+    --pf-v5-global--FontFamily--heading--sans-serif:'DM Sans', 'Proxima Nova', ui-sans-serif, system-ui, sans-serif;
+
+    /* Brand blue — links, focus, active nav */
+    --pf-v5-global--primary-color--100: #0052A5;
+    --pf-v5-global--primary-color--200: #00398A;
+    --pf-v5-global--link--Color:        #0052A5;
+    --pf-v5-global--link--Color--hover: #00398A;
+    --pf-v5-global--active-color--100:  #0052A5;
+    --pf-v5-global--focus-ring--Color:  #0052A5;
+
+    /* Page backgrounds */
+    --pf-v5-global--BackgroundColor--100:           #F3F4F6;
+    --pf-v5-c-page--BackgroundColor:                #F3F4F6;
+    --pf-v5-c-page__main--BackgroundColor:          #F3F4F6;
+    --pf-v5-c-page__main-section--BackgroundColor:  #F3F4F6;
+
+    /* Sidebar — portal --bg-sidebar */
+    --pf-v5-c-page__sidebar--BackgroundColor:       #F8FAFB;
+
+    /* Header — white */
+    --pf-v5-c-masthead--BackgroundColor:            #FFFFFF;
+    --pf-v5-c-page__header--BackgroundColor:        #FFFFFF;
+
+    /* Cards */
+    --pf-v5-c-card--BackgroundColor:                #FFFFFF;
+
+    /* Text — portal palette */
+    --pf-v5-global--Color--100: #1F2937;
+    --pf-v5-global--Color--200: #6B7280;
+    --pf-v5-global--Color--300: #9CA3AF;
+
+    /* Borders */
+    --pf-v5-global--BorderColor--100: #E5E7EB;
+    --pf-v5-global--BorderColor--200: #D1D5DB;
+
+    /* Nav */
+    --pf-v5-c-nav--BackgroundColor:                           #F8FAFB;
+    --pf-v5-c-nav__link--Color:                               #1F2937;
+    --pf-v5-c-nav__link--hover--BackgroundColor:              rgba(0, 82, 165, 0.05);
+    --pf-v5-c-nav__link--m-current--Color:                    #0052A5;
+    --pf-v5-c-nav__link--m-current--after--BackgroundColor:   #0052A5;
+
+    /* Inputs */
+    --pf-v5-c-form-control--BackgroundColor: #F9FAFB;
+    --pf-v5-c-form-control--BorderColor:     #D1D5DB;
+    --pf-v5-c-form-control--Color:           #1F2937;
+
+    /* Primary button — portal brand red */
+    --pf-v5-c-button--m-primary--BackgroundColor:         #DC4040;
+    --pf-v5-c-button--m-primary--hover--BackgroundColor:  #B83232;
+    --pf-v5-c-button--m-primary--active--BackgroundColor: #9a2828;
+    --pf-v5-c-button--m-primary--focus--BackgroundColor:  #B83232;
+    --pf-v5-c-button--m-primary--Color: #ffffff;
+
+    /* Border radius — matches portal --radius */
+    --pf-v5-global--BorderRadius: 0.4rem;
+}
+
+/* ------------------------------------------------------------------
+   DARK MODE  (html.pf-v5-theme-dark — set by theme-mode.js)
+   ------------------------------------------------------------------ */
+html.pf-v5-theme-dark,
+.pf-v5-theme-dark {
+    /* Brand blue — lightened for dark bg readability */
+    --pf-v5-global--primary-color--100: #4d9de0;
+    --pf-v5-global--primary-color--200: #7eb8f0;
+    --pf-v5-global--link--Color:        #4d9de0;
+    --pf-v5-global--link--Color--hover: #7eb8f0;
+    --pf-v5-global--active-color--100:  #4d9de0;
+    --pf-v5-global--focus-ring--Color:  #4d9de0;
+
+    /* Page backgrounds — portal dark palette */
+    --pf-v5-global--BackgroundColor--100:           #111315;
+    --pf-v5-c-page--BackgroundColor:                #111315;
+    --pf-v5-c-page__main--BackgroundColor:          #111315;
+    --pf-v5-c-page__main-section--BackgroundColor:  #111315;
+
+    /* Sidebar — portal --bg-sidebar dark */
+    --pf-v5-c-page__sidebar--BackgroundColor:       #151719;
+
+    /* Header */
+    --pf-v5-c-masthead--BackgroundColor:            #151719;
+    --pf-v5-c-page__header--BackgroundColor:        #151719;
+
+    /* Cards — portal --bg-card dark */
+    --pf-v5-c-card--BackgroundColor:                #171a1d;
+
+    /* Text */
+    --pf-v5-global--Color--100: #f2f4f5;
+    --pf-v5-global--Color--200: #b8bec4;
+    --pf-v5-global--Color--300: #7f878e;
+
+    /* Borders */
+    --pf-v5-global--BorderColor--100: #292e33;
+    --pf-v5-global--BorderColor--200: #373d43;
+
+    /* Nav */
+    --pf-v5-c-nav--BackgroundColor:                           #151719;
+    --pf-v5-c-nav__link--Color:                               #b8bec4;
+    --pf-v5-c-nav__link--hover--BackgroundColor:              rgba(255, 255, 255, 0.04);
+    --pf-v5-c-nav__link--m-current--Color:                    #4d9de0;
+    --pf-v5-c-nav__link--m-current--after--BackgroundColor:   #4d9de0;
+
+    /* Inputs */
+    --pf-v5-c-form-control--BackgroundColor: #111315;
+    --pf-v5-c-form-control--BorderColor:     #292e33;
+    --pf-v5-c-form-control--Color:           #f2f4f5;
+
+    /* Primary button — same red works on dark too */
+    --pf-v5-c-button--m-primary--BackgroundColor:         #DC4040;
+    --pf-v5-c-button--m-primary--hover--BackgroundColor:  #B83232;
+    --pf-v5-c-button--m-primary--active--BackgroundColor: #9a2828;
+    --pf-v5-c-button--m-primary--focus--BackgroundColor:  #B83232;
+    --pf-v5-c-button--m-primary--Color: #ffffff;
+}
+
+/* ------------------------------------------------------------------
+   GLOBAL FONT
+   ------------------------------------------------------------------ */
+html, body, * {
+    font-family: 'DM Sans', 'Proxima Nova', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------------
+   DIRECT PROPERTY OVERRIDES — LIGHT
+   (belt-and-braces where PF ignores CSS vars)
+   ------------------------------------------------------------------ */
+:not(.pf-v5-theme-dark) .pf-v5-c-page,
+:not(.pf-v5-theme-dark) .pf-v5-c-page__main,
+:not(.pf-v5-theme-dark) .pf-v5-c-page__main-section {
+    background-color: #F3F4F6;
+    color: #1F2937;
+}
+:not(.pf-v5-theme-dark) .pf-v5-c-page__sidebar,
+:not(.pf-v5-theme-dark) .pf-v5-c-nav {
+    background-color: #F8FAFB;
+    border-right: 1px solid #E5E7EB;
+}
+:not(.pf-v5-theme-dark) .pf-v5-c-masthead {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E5E7EB;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+:not(.pf-v5-theme-dark) .pf-v5-c-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 0.4rem;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+/* ------------------------------------------------------------------
+   DIRECT PROPERTY OVERRIDES — DARK
+   ------------------------------------------------------------------ */
+.pf-v5-theme-dark .pf-v5-c-page,
+.pf-v5-theme-dark .pf-v5-c-page__main,
+.pf-v5-theme-dark .pf-v5-c-page__main-section {
+    background-color: #111315;
+    color: #f2f4f5;
+}
+.pf-v5-theme-dark .pf-v5-c-page__sidebar,
+.pf-v5-theme-dark .pf-v5-c-nav {
+    background-color: #151719;
+    border-right: 1px solid #292e33;
+}
+.pf-v5-theme-dark .pf-v5-c-masthead {
+    background-color: #151719;
+    border-bottom: 1px solid #292e33;
+}
+.pf-v5-theme-dark .pf-v5-c-card {
+    background-color: #171a1d;
+    border: 1px solid #292e33;
+    border-radius: 0.4rem;
+}
+
+/* ------------------------------------------------------------------
+   PRIMARY BUTTON — portal brand red, both modes
+   ------------------------------------------------------------------ */
+.pf-v5-c-button.pf-m-primary {
+    background-color: #DC4040;
+    border-color: #DC4040;
+    color: #ffffff;
+    border-radius: 0.4rem;
+    font-weight: 600;
+}
+.pf-v5-c-button.pf-m-primary:hover,
+.pf-v5-c-button.pf-m-primary:focus {
+    background-color: #B83232;
+    border-color: #B83232;
+}
+.pf-v5-c-button.pf-m-primary:disabled {
+    background-color: #9CA3AF;
+    border-color: #9CA3AF;
+}
+
+/* ------------------------------------------------------------------
+   NAV — active item, light + dark
+   ------------------------------------------------------------------ */
+:not(.pf-v5-theme-dark) .pf-v5-c-nav__link { color: #1F2937; }
+:not(.pf-v5-theme-dark) .pf-v5-c-nav__link:hover { color: #0052A5; background-color: rgba(0, 82, 165, 0.05); }
+:not(.pf-v5-theme-dark) .pf-v5-c-nav__link.pf-m-current {
+    color: #0052A5;
+    border-left: 3px solid #0052A5;
+    background-color: rgba(0, 82, 165, 0.06);
+    font-weight: 600;
+}
+
+.pf-v5-theme-dark .pf-v5-c-nav__link { color: #b8bec4; }
+.pf-v5-theme-dark .pf-v5-c-nav__link:hover { color: #4d9de0; background-color: rgba(255,255,255,0.04); }
+.pf-v5-theme-dark .pf-v5-c-nav__link.pf-m-current {
+    color: #4d9de0;
+    border-left: 3px solid #4d9de0;
+    background-color: rgba(77, 157, 224, 0.08);
+    font-weight: 600;
+}
+
+/* ------------------------------------------------------------------
+   INPUTS
+   ------------------------------------------------------------------ */
+:not(.pf-v5-theme-dark) .pf-v5-c-form-control {
+    background-color: #F9FAFB;
+    border-color: #D1D5DB;
+    color: #1F2937;
+    border-radius: 0.4rem;
+}
+.pf-v5-theme-dark .pf-v5-c-form-control {
+    background-color: #111315;
+    border-color: #292e33;
+    color: #f2f4f5;
+    border-radius: 0.4rem;
+}
+:not(.pf-v5-theme-dark) .pf-v5-c-form-control:focus,
+:not(.pf-v5-theme-dark) .pf-v5-c-form-control:focus-within {
+    border-color: #0052A5;
+    box-shadow: 0 0 0 3px rgba(0, 82, 165, 0.12);
+}
+.pf-v5-theme-dark .pf-v5-c-form-control:focus,
+.pf-v5-theme-dark .pf-v5-c-form-control:focus-within {
+    border-color: #4d9de0;
+    box-shadow: 0 0 0 3px rgba(77, 157, 224, 0.15);
+}
+
+/* ------------------------------------------------------------------
+   LINKS
+   ------------------------------------------------------------------ */
+:not(.pf-v5-theme-dark) a { color: #0052A5; }
+:not(.pf-v5-theme-dark) a:hover { color: #00398A; }
+.pf-v5-theme-dark a { color: #4d9de0; }
+.pf-v5-theme-dark a:hover { color: #7eb8f0; }
+
+/* ------------------------------------------------------------------
+   JUMP-LINKS (section nav on right)
+   ------------------------------------------------------------------ */
+:not(.pf-v5-theme-dark) .pf-v5-c-jump-links__item.pf-m-current .pf-v5-c-jump-links__link {
+    color: #0052A5;
+    border-left-color: #0052A5;
+}
+.pf-v5-theme-dark .pf-v5-c-jump-links__item.pf-m-current .pf-v5-c-jump-links__link {
+    color: #4d9de0;
+    border-left-color: #4d9de0;
+}
+
+/* ------------------------------------------------------------------
+   READ-ONLY FIRST NAME / LAST NAME FIELDS
+   ------------------------------------------------------------------ */
+input.eco-readonly-field,
+.pf-v5-c-form-control.eco-readonly-field,
+input[name="firstName"],
+input[name="lastName"] {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}
+:not(.pf-v5-theme-dark) input.eco-readonly-field,
+:not(.pf-v5-theme-dark) input[name="firstName"],
+:not(.pf-v5-theme-dark) input[name="lastName"] {
+    background-color: #F3F4F6 !important;
+    color: #6B7280 !important;
+    border-color: #E5E7EB !important;
+}
+.pf-v5-theme-dark input.eco-readonly-field,
+.pf-v5-theme-dark input[name="firstName"],
+.pf-v5-theme-dark input[name="lastName"] {
+    background-color: #191c1f !important;
+    color: #7f878e !important;
+    border-color: #292e33 !important;
+}
+
+/* ------------------------------------------------------------------
+   MISC — border-radius consistency, secondary button
+   ------------------------------------------------------------------ */
+.pf-v5-c-button { border-radius: 0.4rem; }
+
+.pf-v5-c-button.pf-m-link {
+    color: #0052A5;
+    font-weight: 500;
+}
+.pf-v5-theme-dark .pf-v5-c-button.pf-m-link { color: #4d9de0; }

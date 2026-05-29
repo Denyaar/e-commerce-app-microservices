@@ -1,0 +1,47 @@
+version: '3'
+
+volumes:
+  keycloak-db-data:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:13.7
+    container_name: postgres
+    ports:
+      - "5324:5432"
+    volumes:
+      - keycloak-db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: my_keycloak
+      POSTGRES_PASSWORD: My863Keycloak
+  keycloak:
+    image: keycloak-spi:latest
+    container_name: open-api-keycloak
+    environment:
+      KC_HOSTNAME_STRICT: 'false'
+      KC_HOSTNAME_STRICT_HTTPS: 'false'
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: MyKeycloak493
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: MyKeycloak493
+      KC_DB: postgres
+      KC_DB_URL: 'jdbc:postgresql://postgres:5432/keycloak'
+      KC_DB_USERNAME: my_keycloak
+      KC_DB_PASSWORD: My863Keycloak
+      KC_HEALTH_ENABLED: 'true'
+      KC_METRICS_ENABLED: 'true'
+      KC_HOSTNAME: localhost
+      PROXY_ADDRESS_FORWARDING: "true"
+      KC_SPI_THEME_DEFAULT: 'ecopay'
+    command:
+      #      - "-v start --optimized --import-realm"
+#      - "-v start  --import-realm --http-port=8080 --https-port=8443"
+      - "-v"
+      - "start-dev"
+    ports:
+      - 8443:8443
+      - 8082:8080
+    depends_on:
+      - postgres
