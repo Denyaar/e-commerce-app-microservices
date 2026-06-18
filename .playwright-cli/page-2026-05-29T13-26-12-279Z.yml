@@ -1,0 +1,24 @@
+- generic [active] [ref=e1]:
+  - figure [ref=e4]:
+    - img [ref=e5]
+  - generic [ref=e8]:
+    - img [ref=e10]
+    - img [ref=e14]
+    - generic [ref=e29]:
+      - heading "Mobile authenticator setup" [level=1] [ref=e30]
+      - heading "You need to set up mobile authenticator to active your account." [level=2] [ref=e31]
+      - heading "Install FreeOTP on your mobile phone." [level=3] [ref=e32]
+      - paragraph [ref=e33]: Open the application and scan the barcode below.
+      - img [ref=e36]
+      - paragraph [ref=e37]: Unable to scan?
+      - paragraph [ref=e38]: Enter the one-time code provided by the application and click Submit to finish the setup. Provide a device name to help you manage your OTP devices.
+    - generic [ref=e39]:
+      - generic [ref=e40]: One-time code
+      - textbox "One-time code" [ref=e41]
+    - generic [ref=e42]:
+      - generic [ref=e44]: Device Name
+      - textbox "Device name" [ref=e46]
+    - generic [ref=e50]:
+      - checkbox [checked] [ref=e51]
+      - generic [ref=e52]: Sign out from other devices
+    - button "Submit" [ref=e53]

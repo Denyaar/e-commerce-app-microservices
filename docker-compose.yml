@@ -22,6 +22,7 @@ services:
 
   meilisearch:
     image: 'getmeili/meilisearch:latest'
+    container_name: ms_meilisearch
     restart: unless-stopped
     environment:
       MEILI_MASTER_KEY: 'ROOT_MUPEZENI_MASTER_KEY_0102'  # Set a strong master key for security

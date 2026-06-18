@@ -1,0 +1,13 @@
+- generic [active] [ref=e1]:
+  - text: Sign in
+  - figure [ref=e4]:
+    - img [ref=e5]
+  - generic [ref=e8]:
+    - img [ref=e10]
+    - img [ref=e14]
+    - heading "OTP Authentication" [level=1] [ref=e29]
+    - heading "Please check your authenticator app for the One-Time Password (OTP)" [level=2] [ref=e30]
+    - generic [ref=e31]:
+      - generic [ref=e32]: One-time code
+      - textbox "One Time Password" [ref=e33]
+    - button "Sign in" [ref=e34]
