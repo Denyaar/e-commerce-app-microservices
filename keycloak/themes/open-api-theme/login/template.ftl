@@ -15,6 +15,7 @@
         <script defer
                 src="https://unpkg.com/@colinaut/alpinejs-plugin-simple-validate@1/dist/alpine.validate.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldh-espAAAAAGMD9FUearLzwA4Xy1qkfj_Ls0LA"></script>
 
         <#if properties.styles?has_content>
             <#list properties.styles?split(' ') as style>

@@ -14,6 +14,21 @@
     --success: #16a34a;
 }
 
+html.dark {
+    --eco-blue: #4d9de0;
+    --eco-blue-dark: #7eb8f0;
+    --eco-red: #DC4040;
+    --eco-red-dark: #B83232;
+    --bg-canvas: #111315;
+    --bg-panel: #171a1d;
+    --bg-input: #111315;
+    --border: #292e33;
+    --border-input: #373d43;
+    --text-primary: #f2f4f5;
+    --text-secondary: #b8bec4;
+    --text-placeholder: #7f878e;
+}
+
 * { box-sizing: border-box; }
 html { min-height: 100%; }
 body.open-api-auth {
@@ -218,6 +233,54 @@ a:hover { color: var(--eco-blue-dark); }
 .action-row {
     display: grid;
     gap: 10px;
+}
+.passkey-credential-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 22px;
+}
+.passkey-credential-title {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+}
+.passkey-credential {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-input);
+}
+.passkey-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    color: var(--eco-blue);
+    background: rgba(0, 82, 165, 0.08);
+    border: 1px solid rgba(0, 82, 165, 0.18);
+    font-weight: 700;
+}
+html.dark .passkey-icon {
+    background: rgba(77, 157, 224, 0.12);
+    border-color: rgba(77, 157, 224, 0.28);
+}
+.passkey-label {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+.passkey-meta {
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 3px;
 }
 .form-grid {
     display: grid;

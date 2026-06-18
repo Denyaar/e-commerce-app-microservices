@@ -79,6 +79,10 @@
             </div>
         </#if>
 
+        <#if recaptchaRequired??>
+            <div class="g-recaptcha" data-size="compact" data-sitekey="${recaptchaSiteKey}"></div>
+        </#if>
+
         <button class="submit-btn" id="RegisterButton" type="submit">${msg("doRegister")}</button>
     </form>
 

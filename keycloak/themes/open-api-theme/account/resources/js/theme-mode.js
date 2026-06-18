@@ -2,7 +2,6 @@
     var DARK_CLASS  = "pf-v5-theme-dark";
     var STORAGE_KEY = "eco-theme";
 
-    /* ---- Theme switching ---- */
     function applyMode(dark) {
         if (dark) {
             document.documentElement.classList.add(DARK_CLASS);
@@ -29,44 +28,4 @@
             if (!sessionStorage.getItem(STORAGE_KEY)) applyMode(e.matches);
         });
     }
-
-    /* ---- Hide Applications nav item ---- */
-    function hideApplications() {
-        document.querySelectorAll(".pf-v5-c-nav__link").forEach(function (link) {
-            if (/applications/i.test(link.textContent)) {
-                var item = link.closest(".pf-v5-c-nav__item");
-                if (item) item.style.display = "none";
-            }
-        });
-    }
-
-    /* ---- Lock First Name & Last Name fields ---- */
-    function lockNameFields() {
-        ["firstName", "lastName"].forEach(function (field) {
-            var input = document.querySelector(
-                'input[name="' + field + '"], #' + field
-            );
-            if (input && !input.hasAttribute("readonly")) {
-                input.setAttribute("readonly", "readonly");
-                input.setAttribute("tabindex", "-1");
-                input.classList.add("eco-readonly-field");
-            }
-        });
-    }
-
-    // Both functions need to run after React renders the page content
-    document.addEventListener("DOMContentLoaded", function () {
-        hideApplications();
-        lockNameFields();
-    });
-
-    var observer = new MutationObserver(function () {
-        hideApplications();
-        lockNameFields();
-    });
-    observer.observe(document.body || document.documentElement, {
-        childList: true,
-        subtree: true
-    });
-    setTimeout(function () { observer.disconnect(); }, 5000);
 })();

@@ -4,7 +4,6 @@
     <#if section = "title">
         ${msg("loginTitle",(realm.displayName!''))}
     <#elseif section = "header">
-        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet"/>
         <link href="${url.resourcesPath}/img/favicon.png" rel="icon"/>
     <#elseif section = "form">
         <#if realm.password>
@@ -232,6 +231,30 @@
                     </div>
                 </div>
 
+                <div class="flex flex-col space-y-1.5 mb-8 input-block group">
+                    <div class="flex w-full justify-between">
+                        <!-- Label --><label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">
+                            How do you want to receive your OTP?
+                        </label>
+                        <!-- /Label -->
+                    </div>
+                    <div class="relative group" x-data="{method: 'sms'}">
+                        <fieldset>
+                            <div class="flex flex-row justify-center p-0.5 bg-secondary rounded-lg md:max-w-[50%]">
+                                <label for="otpMethodSms" class="border rounded-l-lg py-2 px-3 flex items-center justify-center text-sm font-medium sm:flex-1 cursor-pointer focus:outline-none checked:bg-primary checked:border-transparent checked:text-white checked:hover:bg-primary/80 border-r-0" :aria-checked="method == 'sms'" :class="method == 'sms' ? 'bg-primary border-transparent text-white hover:bg-primary hover:text-white' : 'bg-card border-border text-card-foreground hover:bg-primary hover:text-white hover:border-primary'">
+                                    <input x-model="method" id="otpMethodSms" type="radio" name="otp-method" value="sms" class="sr-only" aria-labelledby="sms-choice">
+                                    <p id="sms-choice">SMS</p>
+                                </label>
+
+                                <label for="otpMethodEmail" class="border rounded-r-lg py-2 px-3 flex items-center justify-center text-sm font-medium sm:flex-1 cursor-pointer focus:outline-none checked:bg-primary checked:border-transparent checked:text-white checked:hover:bg-primary/80 border-l-0" :aria-checked="method == 'email'" :class="method == 'email' ? 'bg-primary border-transparent text-white hover:bg-primary hover:text-white' : 'bg-card border-border text-card-foreground hover:bg-primary hover:text-white hover:border-primary'">
+                                    <input x-model="method" id="otpMethodEmail" type="radio" name="otp-method" value="email" class="sr-only" aria-labelledby="email-choice">
+                                    <p id="email-choice">Email</p>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
                 <div class="flex flex-col mb-4 input-block">
                     <div class="flex items-center group gap-2">
                         <input checked
@@ -252,6 +275,22 @@
                 </div>
 
 
+<#--                <h2>Select OTP Delivery Method</h2>-->
+<#--                <label for="otpMethodEmail">-->
+<#--                    <input type="radio" id="otpMethodEmail" name="otpDeliveryMethod" value="email" checked>-->
+<#--                    Send OTP via Email-->
+<#--                </label>-->
+<#--                <br>-->
+<#--                <label for="otpMethodSms">-->
+<#--                    <input type="radio" id="otpMethodSms" name="otpDeliveryMethod" value="sms">-->
+<#--                    Send OTP via SMS-->
+<#--                </label>-->
+<#--                <br>-->
+
+
+
+
+
                 <!-- Button -->
                 <input
                         class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border shadow-sm px-4 py-2 border-primary bg-primary hover:bg-primary/80 hover:text-white text-white h-12 w-full"
@@ -259,6 +298,32 @@
                         type="submit"
                         value="${msg("doLogIn")}"/>
 
+                <#if recaptchaRequired??>
+                    <script>
+                        function onSubmit(token) {
+                            // Handle the form submission and reCAPTCHA token
+                            console.log(" Submitting Captcha Result");
+                            var form = document.getElementById('kc-form-login');
+                            var recaptchaResponseInput = document.createElement('input');
+                            recaptchaResponseInput.setAttribute('type', 'hidden');
+                            recaptchaResponseInput.setAttribute('name', 'g-recaptcha-response');
+                            recaptchaResponseInput.setAttribute('value', token);
+                            form.appendChild(recaptchaResponseInput);
+                            form.submit();
+                        }
+
+                        document.getElementById('kc-form-login').addEventListener('submit', function (event) {
+                            console.log("Submit");
+                            event.preventDefault(); // Prevent the form from submitting immediately
+                            grecaptcha.enterprise.execute('6Ldh-espAAAAAGMD9FUearLzwA4Xy1qkfj_Ls0LA', {action: 'submit'})
+                                .then(function (token) {
+                                    console.log("Token " + token)
+                                    onSubmit(token);
+                                });
+
+                        });
+                    </script>
+                </#if>
                 <!-- /Button -->
             </form>
         </#if>
