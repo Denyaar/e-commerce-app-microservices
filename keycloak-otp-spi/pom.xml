@@ -16,7 +16,7 @@
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <keycloak.version>26.0.0</keycloak.version>
+        <keycloak.version>26.6.4</keycloak.version>
         <twilio.version>10.1.5</twilio.version>
         <jakarta.mail.version>2.0.1</jakarta.mail.version>
     </properties>
