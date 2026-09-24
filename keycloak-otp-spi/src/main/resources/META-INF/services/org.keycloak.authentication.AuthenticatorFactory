@@ -1,1 +1,2 @@
 com.ecocash.keycloak.otp.OTPAuthenticatorFactory
+com.ecocash.keycloak.otp.CustomUsernamePasswordFormFactory

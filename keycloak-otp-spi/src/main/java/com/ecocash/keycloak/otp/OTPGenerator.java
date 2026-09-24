@@ -12,11 +12,18 @@ public class OTPGenerator {
     private static final SecureRandom random = new SecureRandom();
 
     /**
-     * Generate a random OTP code
+     * Generate a random OTP code with default length
      */
     public static String generateOTP() {
+        return generateOTP(OTPConfig.OTP_LENGTH);
+    }
+
+    /**
+     * Generate a random OTP code with specified length
+     */
+    public static String generateOTP(int length) {
         StringBuilder otp = new StringBuilder();
-        for (int i = 0; i < OTPConfig.OTP_LENGTH; i++) {
+        for (int i = 0; i < length; i++) {
             int index = random.nextInt(OTPConfig.OTP_CHARS.length());
             otp.append(OTPConfig.OTP_CHARS.charAt(index));
         }
@@ -24,11 +31,18 @@ public class OTPGenerator {
     }
 
     /**
-     * Get OTP expiry timestamp
+     * Get OTP expiry timestamp with default expiry time
      */
     public static long getExpiryTimestamp() {
+        return getExpiryTimestamp(OTPConfig.OTP_EXPIRY_MINUTES);
+    }
+
+    /**
+     * Get OTP expiry timestamp with specified expiry time in minutes
+     */
+    public static long getExpiryTimestamp(int expiryMinutes) {
         return Instant.now()
-                .plus(OTPConfig.OTP_EXPIRY_MINUTES, ChronoUnit.MINUTES)
+                .plus(expiryMinutes, ChronoUnit.MINUTES)
                 .toEpochMilli();
     }
 
